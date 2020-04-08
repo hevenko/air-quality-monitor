@@ -15,7 +15,8 @@
 
 struct sConfig config = {
   credentials.wifissid, credentials.wifipassword,
-  credentials.apssid, credentials.appassword,
+  "Air-Q" + String(ESP.getChipId(), HEX), "5A9i0r-Q2u8a7L6i4t3y",
+  // credentials.apssid, credentials.appassword,
   5, "sec", "delayNB", calcDelayUS(), // 'none', 'delay', 'delayNB' (non blocking delay), 'deepsleep'
   //10, "sec", "deepsleep", calcDelayUS(), // 'none', 'delay', 'delayNB' (non blocking delay), 'deepsleep'
   "http", trimRight("my-json-server.typicode.com", "/"), 80, ensureLeftTrimRight("/typicode/demo/", "/"),

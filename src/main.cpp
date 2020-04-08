@@ -21,10 +21,6 @@
 #include <misc.h>
 #include <config.h>
 
-// #include <DNSServer.h>            //Local DNS Server used for redirecting all requests to the configuration portal
-// #include <ESP8266WebServer.h>     //Local WebServer used to serve the configuration portal
-// #include <WiFiManager.h> 
-
 struct sSensor dhtSensor = { NULL, "", 0, 0, 0, 0, 0 };
 sSensor bmpSensor = { NULL, "", 0, 0, 0, 0, 0 };
 
@@ -93,7 +89,7 @@ void setupConfig() {
   String resetReason = ESP.getResetReason();
   Serial.printf("Reset reason: %s\n", resetReason.c_str());
 
-  if(dhtSensor.handle == NULL) { // chec if sensor is not already created (in case of wake from deep sleep)
+  if(dhtSensor.handle == NULL) { // check if sensor is not already created (in case of wake from deep sleep)
     // handler, name, port, sensor type, count, minimum delay between sensor reading, internal use
     dhtSensor = { NULL, "DHT11", 2, DHT11, 11, 1000, 0 };
     dhtSensor.handle = new DHT(dhtSensor.pin, dhtSensor.type, dhtSensor.tag); // create sensor
@@ -128,10 +124,6 @@ void setupConfig() {
   Serial.print("WiFi.dnsIP(1): ");
   WiFi.dnsIP(1).printTo(Serial);
 
-  // WiFiManager wifiManager;
-  // wifiManager.autoConnect("AP-NAME", "00000000");
-  //return;
-  //if ((config.wifissid == "") || connectWifi(config.wifissid, config.wifipassword))
   if (!connectWifi())
     //WiFi.softAPdisconnect(true);
     openSoftAP();
@@ -190,32 +182,7 @@ void testJSON() {
   Serial.print("JSON.stringify(myObject2) = ");
   Serial.println(jsonString);
 }
-/*
-class Post: public HttpRequest {
-  public:
-    Post(String r): HttpRequest(r) {};
 
-    JSONVar sendData() {
-      JSONVar data;
-      data["temperature"] = formatAsFloat(station.temperature, 0).toDouble();
-      data["humidity"] = station.humidity;
-      data["pressure"] = station.pressure;
-      data["time"] = 1;
-      return request("POST", "", "", data);
-    };
-    
-    JSONVar send(JSONVar data) {
-      return request("POST", "", "", data);
-    };
-  
-    JSONVar send(String data) {
-      JSONVar body = JSON.parse(data);
-      return send(body);
-    };
-};
-
-Post post(String("posts"));
-*/
 void setup() {
   setupConfig();
 }
