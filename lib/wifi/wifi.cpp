@@ -262,6 +262,7 @@ void openSoftAP() {
   server.begin();
   bSoftAP = true;
   delay(100);
+  handleSoftAPServer();
 }
 
 void handleWebServer() {

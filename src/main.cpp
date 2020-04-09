@@ -191,7 +191,7 @@ void loop() {
   //Serial.print("loop");
   //Serial.println(++counter);
   //delayNonBlocking(2000, handleWebServer);
-  handleSoftAPServer();
+  //handleSoftAPServer();
   //delay(100);
   //handleSoftAPServer();
   //readSensors();
