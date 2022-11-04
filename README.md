@@ -3,7 +3,7 @@ Arduino based monitor for measuring air quality (PM10, PM2.5, CO, SO2, O3, Pb, N
 
 To run sketch (.ino) proper configuration is essential.
 
-Sketch reads configuration (from SPISS) and trys to connect to wifi from configuration.
+Sketch reads configuration (from SPISS) and tries to connect to wifi from configuration.
 If fails to connect to wifi or wifissid is empty then access point for setup would automatically start up.
 
 ### Setup
